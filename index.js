@@ -19,10 +19,10 @@ fetch(
 .catch(e => console.log(e));
 
 app.get('/pokemon', (req, res) => {
-  let result = [{
+  let result = {
     "count": pokemonAll.length,
     "results": pokemonAll
-  }]
+  };
 
   res.send(result);
 });
