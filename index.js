@@ -19,12 +19,17 @@ fetch(
 .catch(e => console.log(e));
 
 app.get('/pokemon', (req, res) => {
-  console.log(req);
-  res.send(pokemonAll);
+  let result = [{
+    "count": pokemonAll.length,
+    "results": pokemonAll
+  }]
+
+  res.send(result);
 });
 
 app.get('/pokemon/:id', (req, res) => {
   const pokemon = pokemonAll.find(p => p.id === parseInt(req.params.id));
+  if (!pokemon) res.status(404);
   res.send(pokemon);
 });
 
